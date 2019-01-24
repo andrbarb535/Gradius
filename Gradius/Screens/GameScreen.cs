@@ -420,6 +420,7 @@ namespace Gradius
                     if (fanRectangles[i].X <= 0)
                     {
                         fanRectangles.Remove(fanRectangles[i]);
+                        HeroDestroyedAnimation();
                     }
                 }
             }
