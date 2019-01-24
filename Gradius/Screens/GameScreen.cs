@@ -420,7 +420,13 @@ namespace Gradius
                     if (fanRectangles[i].X <= 0)
                     {
                         fanRectangles.Remove(fanRectangles[i]);
-                        HeroDestroyedAnimation();
+
+                        //stop song
+                        gameSound.Stop();
+
+                        gameTimer.Enabled = false;
+                        MainForm.ChangeScreen(this, "MenuScreen");
+                        return;
                     }
                 }
             }
@@ -479,9 +485,10 @@ namespace Gradius
                         scoreLabel.Text = heroScore + "";
                         highscoreLabel.Text = heroScore + "";
 
+                        HeroDestroyedAnimation();
+
                         //change orientation of hero rectangle
                         heroOrientation = "";
-                        HeroDestroyedAnimation();
                         break;
                     }
                 }
