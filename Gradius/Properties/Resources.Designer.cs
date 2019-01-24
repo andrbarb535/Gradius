@@ -81,6 +81,24 @@ namespace Gradius.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream CoinSFX {
+            get {
+                return ResourceManager.GetStream("CoinSFX", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream FanDeathSFX {
+            get {
+                return ResourceManager.GetStream("FanDeathSFX", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
         internal static byte[] GameSystemServices {
@@ -111,6 +129,15 @@ namespace Gradius.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream HeroDeathSFX {
+            get {
+                return ResourceManager.GetStream("HeroDeathSFX", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap pixelated_arrow_keys {
@@ -137,6 +164,24 @@ namespace Gradius.Properties {
             get {
                 object obj = ResourceManager.GetObject("Red_circle", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream ShootSFX {
+            get {
+                return ResourceManager.GetStream("ShootSFX", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream Start {
+            get {
+                return ResourceManager.GetStream("Start", resourceCulture);
             }
         }
         

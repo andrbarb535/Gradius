@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using GameSystemServices;
 using System.Threading;
+using System.Media;
 
 namespace Gradius
 {
@@ -21,6 +22,11 @@ namespace Gradius
 
         private void playButton_Click(object sender, EventArgs e)
         {
+            SoundPlayer player = new SoundPlayer(Properties.Resources.CoinSFX);
+            player.Play();
+
+            Thread.Sleep(1500);
+
             for (int i = 0; i < 5; i++)
             {
                 onePlayerCoverLabel.Visible = true;
@@ -31,6 +37,7 @@ namespace Gradius
                 this.Refresh();
                 Thread.Sleep(150);
             }
+
             MainForm.ChangeScreen(this, "GameScreen");
         }
 
@@ -38,6 +45,9 @@ namespace Gradius
         {
             for (int i = 0; i < 5; i++)
             {
+                SoundPlayer player = new SoundPlayer(Properties.Resources.CoinSFX);
+                player.Play();
+
                 twoPlayerCoverLabel.Visible = true;
                 this.Refresh();
                 Thread.Sleep(200);

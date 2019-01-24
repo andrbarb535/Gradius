@@ -124,6 +124,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\02 Beginning of History.vgz" />
     <None Include="Resources\arcade_blue.png" />
   </ItemGroup>
   <ItemGroup>
@@ -168,6 +169,24 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Red_circle.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Sound Effect %286%29.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Sound Effect %2819%29.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Sound Effect %2815%29.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Sound Effect %287%29.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\103 start of stage %281%29 %281%29 - Copy.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\e0808c15.au" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

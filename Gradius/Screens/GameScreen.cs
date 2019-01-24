@@ -28,6 +28,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using GameSystemServices;
 using System.Threading;
+using System.Media;
 
 namespace Gradius
 {
@@ -53,6 +54,7 @@ namespace Gradius
         string heroOrientation = "Upright";
         int heroDestroyedCounter = 0;
         int heroLives = 3;
+        int heroScore = 0;
 
         //fans orientation
         string fanOrientation = "Cross Explosion";
@@ -100,6 +102,9 @@ namespace Gradius
         SolidBrush blackBrush = new SolidBrush(Color.Black);
         SolidBrush transparentBrush = new SolidBrush(Color.Transparent);
 
+        //SFX
+        SoundPlayer gameSound = new SoundPlayer(Properties.Resources.Start);
+
         public GameScreen()
         {
             InitializeComponent();
@@ -111,6 +116,8 @@ namespace Gradius
         {
             ///setup all initial game values here. Use this method
             ///each time you restart your game to reset all values.
+            gameSound.PlayLooping();
+
             gameTimer.Enabled = true;
 
             heroX = this.Width / 7;
@@ -119,6 +126,8 @@ namespace Gradius
             heroSpeed = 8;
 
             heroLivesLabel.Text = heroLives + "";
+            scoreLabel.Text = heroScore + "";
+            highscoreLabel.Text = heroScore + "";
 
             //randomly generate stars
             for (int i = 0; i < 30; i++)
@@ -432,6 +441,19 @@ namespace Gradius
 
                             //remove rectangles
                             fanRectangles.RemoveAt(j);
+
+                            //increase score
+                            heroScore = heroScore + 100;
+
+                            heroLivesLabel.Text = heroLives + "";
+                            scoreLabel.Text = heroScore + "";
+                            highscoreLabel.Text = heroScore + "";
+
+                            /*
+                            SoundPlayer fanDeathSound = new SoundPlayer(Properties.Resources.FanDeathSFX);
+                            fanDeathSound.PlaySync();
+                            */
+
                             break;
                         }
                     }
@@ -446,8 +468,15 @@ namespace Gradius
                 {
                     if (fanRectangles[i].IntersectsWith(heroRectangle))
                     {
+                        //stop song
+                        gameSound.Stop();
+
                         //remove fan
                         fanRectangles.RemoveAt(i);
+
+                        heroLivesLabel.Text = heroLives + "";
+                        scoreLabel.Text = heroScore + "";
+                        highscoreLabel.Text = heroScore + "";
 
                         //change orientation of hero rectangle
                         heroOrientation = "";
@@ -732,6 +761,7 @@ namespace Gradius
 
             //DRAW FANS
             
+            /*
             if (fanRectangles.Count > 0)
             {
                 for (int i = 0; i < fanRectangles.Count; i++)
@@ -740,6 +770,7 @@ namespace Gradius
                     e.Graphics.DrawRectangle(heroPen, fanRectangles[i]);
                 }
             }
+            */
 
             if (fanRectangles.Count > 0)
             {
@@ -1204,6 +1235,10 @@ namespace Gradius
                 rightArrowDown = leftArrowDown = upArrowDown = downArrowDown = mDown = false;
                 heroDestroyedCounter++;
 
+                SoundPlayer heroSound = new SoundPlayer(Properties.Resources.HeroDeathSFX);
+                //heroSound.Play();
+
+
                 if (heroDestroyedCounter == 1)
                 {
                     Refresh();
@@ -1382,12 +1417,15 @@ namespace Gradius
                     {
                         heroLives = heroLives - 1;
                         heroLivesLabel.Text = heroLives + "";
+                        //heroSound.Stop();
+                        gameSound.PlayLooping();
                     }
                     else
                     {
                         ///Errors out crashing the program
-                        
+                        gameTimer.Enabled = false;
                         MainForm.ChangeScreen(this, "MenuScreen");
+                        return;
 
                         /*
                         Application.Restart();
