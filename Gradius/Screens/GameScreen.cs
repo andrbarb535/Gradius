@@ -1427,10 +1427,6 @@ namespace Gradius
                         gameTimer.Enabled = false;
                         MainForm.ChangeScreen(this, "MenuScreen");
                         return;
-
-                        /*
-                        Application.Restart();
-                        */
                     }
                 }
             }
